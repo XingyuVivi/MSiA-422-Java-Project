@@ -1,27 +1,37 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MyPandas {
-    public static void main(String[] args) {
-        // Test code for the class
-        String test_path = "C:/Users/nuke2/Desktop/NW Work/Data/babynames/IL.TXT";
-        readCSV(test_path);
+
+    public static String path;
+
+    public static myDataFrame readCSV(String path) throws FileNotFoundException {
+        File text = new File(path);
+
+        ArrayList<ArrayList<Object>> data = new ArrayList<ArrayList<Object>>();
+
+        Scanner sc = new Scanner(text);
+
+        while (sc.hasNextLine()) {
+            String row = sc.nextLine();
+            String[] row_data_split = row.split(",");
+
+            ArrayList<Object> row_data = new ArrayList<>();
+
+            row_data.add(row_data_split[0]);
+            row_data.add(row_data_split[1]);
+            row_data.add(row_data_split[2]);
+            row_data.add(row_data_split[3]);
+            row_data.add(row_data_split[4]);
+
+            data.add(row_data);
+        }
+        sc.close();
+
+        return new myDataFrame(data);
     }
 
-    public static void readCSV(String path) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                System.out.println(values[0]);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
 }
