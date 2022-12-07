@@ -72,6 +72,60 @@ public class Test {
                 "/test9.txt";
         MyPandas.writeCSV(p9, output9);
 
+        //Test case 10 for myDataFrame sort(int index)
+        myDataFrame output10 = data.sort(4);
+        String p10 = "/Users/wangxingyu/Dropbox/Mac/Desktop/NU/py_Java/MSiA-422-Java-Project/testCase_output" +
+                "/test10.txt";
+        MyPandas.writeCSV(p10, output10);
+
+        myDataFrame output10_1 = data.sort(2);
+        String p10_1 = "/Users/wangxingyu/Dropbox/Mac/Desktop/NU/py_Java/MSiA-422-Java-Project/testCase_output" +
+                "/test10_1.txt";
+        MyPandas.writeCSV(p10_1, output10_1);
+
+        //Test case 11 for Object getMin(int index)
+        Object output11 = data.getMin(4);
+        System.out.println("Test case 11: The minimum name count in IL is ");
+        System.out.println(output11);
+
+        Object output11_1 = data.getMin(3);
+        System.out.println("Test case 11_1: The smallest name,sorting alphabetically, in IL is ");
+        System.out.println(output11_1);
+
+
+        //Test case 12 for Object getMin(String label)
+        Object output12 = data.getMin("Year");
+        System.out.println("Test case 12: The earliest year record in IL is ");
+        System.out.println(output12);
+
+        Object output12_1 = data.getMin("Count");
+        System.out.println("Test case 12_1: The minimum name count, in IL is ");
+        System.out.println(output12_1);
+
+        //Test case 13 for Object getMax(int index)
+        Object output13 = data.getMax(2);
+        System.out.println("Test case 13: The most recent year record in IL is ");
+        System.out.println(output13);
+
+        Object output13_1 = data.getMax(3);
+        System.out.println("Test case 13_1: The largest name,sorting alphabetically, in IL is ");
+        System.out.println(output13_1);
+
+        //Test case 14 for Object getMax(String label)
+        Object output14 = data.getMax("Year");
+        System.out.println("Test case 14: The most recent year record in IL is ");
+        System.out.println(output14);
+
+        Object output14_1 = data.getMax("Count");
+        System.out.println("Test case 14_1: The largest count in IL is ");
+        System.out.println(output14_1);
+
+
+
+
+
+
+
 
 
 

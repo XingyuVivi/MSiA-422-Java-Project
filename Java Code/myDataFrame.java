@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+//import javafx.util.Pair;
 public class myDataFrame {
 
     public ArrayList<ArrayList<Object>> data;
@@ -221,8 +225,104 @@ public class myDataFrame {
 
     // sorting
     public myDataFrame sort(int index){
-        ArrayList<ArrayList<Object>> output_data = new ArrayList<ArrayList<Object>>();
+        ArrayList<ArrayList<Object>> output_data = this.data;
+        Collections.sort(output_data, new Comparator<ArrayList<Object>>() {
+            @Override
+            public int compare(ArrayList<Object> a1, ArrayList<Object> a2){
+                if (a1.get(index) instanceof Integer){
+                    if ((Integer) a1.get(index) > (Integer) a2.get(index)){
+                        return 1;
+                    }
+                    else if ((Integer) a1.get(index) < (Integer) a2.get(index)){
+                        return -1;
+                    }
+                    return 0;
+                }
+                else {
+                    return ((String) a1.get(index)).compareTo((String) a2.get(index));
+                }
+            }
+        });
         return new myDataFrame(output_data);
+    }
+
+    // Aggregate
+    public Object getMin(int index) {
+        if (this.data.get(0).get(index) instanceof Integer){
+            ArrayList<Integer> compared_col = new ArrayList<Integer>();
+            for (int i = 0; i < this.data.size(); i++){
+                int value = (Integer) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.min(compared_col));
+        }
+        else {
+            ArrayList<String> compared_col = new ArrayList<String>();
+            for (int i = 0; i < this.data.size(); i++){
+                String value = (String) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.min(compared_col));
+        }
+    }
+
+    public Object getMin(String label){
+        int index = this.header.indexOf(label);
+        if (this.data.get(0).get(index) instanceof Integer){
+            ArrayList<Integer> compared_col = new ArrayList<Integer>();
+            for (int i = 0; i < this.data.size(); i++){
+                int value = (Integer) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.min(compared_col));
+        }
+        else {
+            ArrayList<String> compared_col = new ArrayList<String>();
+            for (int i = 0; i < this.data.size(); i++){
+                String value = (String) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.min(compared_col));
+        }
+    }
+
+    public Object getMax(int index){
+        if (this.data.get(0).get(index) instanceof Integer){
+            ArrayList<Integer> compared_col = new ArrayList<Integer>();
+            for (int i = 0; i < this.data.size(); i++){
+                int value = (Integer) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.max(compared_col));
+        }
+        else {
+            ArrayList<String> compared_col = new ArrayList<String>();
+            for (int i = 0; i < this.data.size(); i++){
+                String value = (String) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.max(compared_col));
+        }
+    }
+
+    public Object getMax(String label){
+        int index = this.header.indexOf(label);
+        if (this.data.get(0).get(index) instanceof Integer){
+            ArrayList<Integer> compared_col = new ArrayList<Integer>();
+            for (int i = 0; i < this.data.size(); i++){
+                int value = (Integer) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.max(compared_col));
+        }
+        else {
+            ArrayList<String> compared_col = new ArrayList<String>();
+            for (int i = 0; i < this.data.size(); i++){
+                String value = (String) this.data.get(i).get(index);
+                compared_col.add(value);
+            }
+            return (Collections.max(compared_col));
+        }
     }
 
 
